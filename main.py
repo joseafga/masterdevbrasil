@@ -9,11 +9,10 @@ def get_processes():
     processes = {}
 
     with os.popen(cmd) as out:
-        next(out.__iter__())  # skip header (first line) or out.__next__()
+        # see https://stackoverflow.com/questions/24362007/
+        next(out.__iter__())  # skip header (first line)
 
         for line in out:
-            # debug print(ascii(line))
-
             # sepate pid and command in a tuple
             p = line.rstrip('\n').split(' ', 2)
 
@@ -42,5 +41,4 @@ def generate_menu(tasks):
 
 
 if __name__ == '__main__':
-    # interface para fechar qualquer processo que esteja executando
     generate_menu(get_processes())
