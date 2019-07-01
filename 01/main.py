@@ -6,11 +6,11 @@ owm = pyowm.OWM('API_KEY', language='pt')
 
 
 def get_city(cities):
-    print("{:>10} {:10} {:10}".format("ID", "Cidade", "País"))
+    print("{:>10} {:10} {:10}".format("ID", "Região", "País"))
     for i, c in enumerate(cities):
         print("{:>10} {:10} {:10}".format(i, c[1], c[2]))
 
-    return cities[int(input('\nDigite o ID da cidade: '))]
+    return cities[int(input("\nDigite o ID da região: "))]
 
 
 def run(entry):
@@ -30,7 +30,7 @@ def run(entry):
         # {'temp_max': 10.5, 'temp': 9.7, 'temp_min': 9.0}
         print("Temperatura: {} °C".format(
             w.get_temperature('celsius')['temp']))
-        print("Huminadade: {}%".format(w.get_humidity()))  # 87
+        print("Umidade: {}%".format(w.get_humidity()))  # 87
         # {'speed': 4.6, 'deg': 330}
         print("Vento: {} m/s".format(w.get_wind()['speed']))
 
@@ -41,6 +41,6 @@ def run(entry):
 if __name__ == '__main__':
     # Get all math names
     reg = owm.city_id_registry()
-    entry = input('Digite o nome de sua cidade: ')
+    entry = input('Digite o nome da região: ')
 
     run(entry)
